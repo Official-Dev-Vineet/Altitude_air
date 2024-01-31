@@ -157,9 +157,11 @@
             background-color: var(--purple);
             color: #fff;
         }
-        .container .form-container .form-header h2{
-            font-size:clamp(1.2rem, 5vw, 2rem);
+
+        .container .form-container .form-header h2 {
+            font-size: clamp(1.2rem, 5vw, 2rem);
         }
+
         .container .form-container .form-header p {
             font-size: 0.7em;
             font-weight: 600;
@@ -238,9 +240,10 @@
         }
 
         @media screen and (max-width: 765px) {
-            body{
+            body {
                 align-items: baseline;
             }
+
             .container {
                 grid-template-columns: 1fr;
                 max-width: 100%;
@@ -406,7 +409,7 @@
         signInBtn.style.display = 'none'
         signUpBtn.style.display = 'block'
         signInForm.style.display = 'block'
-        image.src="images/aeroplane3.jpg"
+        image.src = "images/aeroplane3.jpg"
     })
     signUpBtn.addEventListener('click', () => {
 
@@ -414,7 +417,7 @@
         signInBtn.style.display = 'block'
         signUpBtn.style.display = 'none'
         signInForm.style.display = 'none'
-        image.src="images/aeroplane.webp"
+        image.src = "images/aeroplane.webp"
     })
     submit.addEventListener('click', (e) => {
         e.preventDefault()
@@ -460,6 +463,14 @@
         e.preventDefault()
         const emailId = document.getElementById('emailSign').value
         const password = document.getElementById('passwordSign').value
+        if (!validateEmail(emailId)) {
+            generateMsg('Please enter a valid email', 'error-msg')
+            return false
+        }
+        if (password.length < 6) {
+            generateMsg('Password must be atleast 6 characters', 'error-msg')
+            return false
+        }
         fetch('https://breakable-fish-crown.cyclic.app/aptitude/login', {
             method: 'POST',
             headers: {
