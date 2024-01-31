@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altitude Air || Sign Up</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple: hsl(251, 53%, 50%);
+            --blue: hsl(247, 67%, 50%);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            max-width: 950px;
+            width: 100%;
+            min-height: 550px;
+            height: 100%;
+            background-color: #fff;
+            margin: 5px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 0 55px rgba(0, 0, 0, 0.3), 0 0 120px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .container .image-container {
+            position: relative;
+            max-height: 550px;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container .image-container:hover img {
+            transform: scale(1.1);
+            filter: saturate(250%);
+        }
+
+        .container .image-container img {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+            object-fit: cover;
+            animation: move 10s linear infinite forwards;
+        }
+
+        @keyframes move {
+
+            0%,
+            100% {
+                object-position: 100% 100%;
+            }
+
+            50% {
+                object-position: 0% 100%;
+            }
+        }
+
+        .container .image-container .abs-text {
+            position: absolute;
+            bottom: 0;
+            color: #fff;
+            text-align: center;
+            width: 100%;
+            padding: 0 10px;
+            text-shadow: 10px 5px 10px rgba(0, 0, 0, 0.6);
+            background-color: rgba(3, 2, 33, 0.714);
+        }
+
+        .container .image-container .abs-text h2 {
+            position: relative;
+            margin-bottom: 10px;
+            line-height: 1.7;
+            font-size: clamp(1.2rem, 5vw, 2.5rem);
+        }
+
+        .container .image-container .abs-text p {
+            line-height: 1.4;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.6rem, 3.5vw, 1rem);
+        }
+
+        .container .image-container .abs-text h2::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2.2px;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .container .form-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            color: var(--purple);
+            padding: 1rem 2rem;
+        }
+
+        .container .form-container #sign-in {
+            display: none;
+        }
+
+        .container .form-container .btn {
+            width: max-content;
+            margin-left: auto;
+            margin-right: 2rem;
+            margin-block: 2rem;
+        }
+
+        .container .form-container .btn button {
+            padding: 10px 20px;
+            border: 2px solid var(--purple);
+            color: var(--purple);
+            border-radius: 5px;
+            font-weight: 600;
+            transition: 0.5s;
+            background-color: transparent;
+        }
+
+        .container .form-container .btn.sign-up {
+            display: none;
+        }
+
+        .container .form-container .btn button:hover {
+            background-color: var(--purple);
+            color: #fff;
+        }
+        .container .form-container .form-header h2{
+            font-size:clamp(1.2rem, 5vw, 2.5rem);
+        }
+        .container .form-container .form-header p {
+            font-size: 0.7em;
+            font-weight: 600;
+        }
+
+        .container .form-container .form .grid {
+            margin-top: 1rem;
+            display: grid;
+            width: 100%;
+        }
+
+        .container .form-container .form .grid.one {
+            margin-top: 1rem;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .container .form-container .form .grid.two {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .container .form-container .form .grid .form-input {
+            width: 100%;
+            position: relative;
+        }
+
+        .container .form-container .form .grid .form-input input,
+        .container .form-container .form .grid .form-input input:focus,
+        .container .form-container .form .grid .form-input input:hover {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+
+        .container .form-container .form .grid .form-input input[type="submit"] {
+            background-color: var(--blue);
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .container .form-container .form .grid .form-input input[type="submit"]:hover {
+            filter: saturate(150%);
+        }
+
+        .error-msg {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(86, 0, 0, 0.8);
+            color: #fff;
+            z-index: 100;
+        }
+
+        .success-msg {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(2, 88, 2, 0.868);
+            color: #fff;
+            z-index: 100;
+
+        }
+
+        @media screen and (max-width: 765px) {
+            body{
+                align-items: baseline;
+            }
+            .container {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .container .form-container {
+                padding: 1rem;
+            }
+
+            .container .form-container .btn {
+                width: 100%;
+                margin: 1rem 0;
+            }
+
+            .container .form-container .btn button {
+                width: 100%;
+                background-color: var(--blue);
+                color: #fff;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <div class="image-container">
+            <img src="images/aeroplane.webp" alt="signup image">
+            <div class="abs-text">
+                <h2>Altitude Air</h1>
+                    <p>
+                        We Promise to ensure that your well-being is taken care of while travelling with us boasting
+                        tape in class fleet inventory and a five star approval for our in flight experience You know you
+                        are getting the best from altitude with no attitude.
+                    </p>
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="btn sign-in">
+                <button>
+                    Sign in
+                </button>
+            </div>
+            <div class="btn sign-up">
+                <button>
+                    Sign up
+                </button>
+            </div>
+            <div id="sign-up">
+                <div class="form-header">
+                    <h2>
+                        Explore &amp; Experience
+                    </h2>
+                    <p>
+                        Get on to your most comfortable journey yet. All the way up.
+                    </p>
+                </div>
+                <div class="form">
+                    <form method="post" enctype="application/x-www-form-urlencoded" autocomplete="on" id="sign-up-form">
+                        <div class="grid two">
+                            <div class="form-input">
+                                <input type="text" placeholder="First Name" id="first-name" />
+                            </div>
+                            <div class="form-input">
+                                <input type="text" placeholder="Last Name" id="last-name" />
+                            </div>
+                        </div>
+                        <div class="grid one">
+                            <div class="form-input">
+                                <input type="email" placeholder="Email" id="email" />
+                            </div>
+                            <div class="form-input">
+                                <input type="text" placeholder="Username" id="username" />
+                            </div>
+                            <div class="form-input">
+                                <input type="password" placeholder="Password" id="password" />
+                            </div>
+                            <div class="form-input">
+                                <input type="password" placeholder="Confirm Password" id="Cnfirm-password" />
+                            </div>
+                            <div class="form-input">
+                                <input type="submit" value="Get Started" id="submit" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="sign-in">
+                <div class="form-header">
+                    <h2>
+                        Explore &amp; Experience
+                    </h2>
+                    <p>
+                        Get on to your most comfortable journey yet. All the way up.
+                    </p>
+
+                </div>
+                <div class="form">
+                    <form method="post" enctype="application/x-www-form-urlencoded" autocomplete="on" id="sign-in-form">
+                        <div class="grid one">
+                            <div class="form-input">
+                                <input type="email" placeholder="Email" id="emailSign" />
+                            </div>
+                            <div class="form-input">
+                                <input type="password" placeholder="Password" id="passwordSign" />
+                            </div>
+                            <div class="form-input">
+                                <input type="submit" value="Sign In" id="signIn" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+
+    // image animation state change 
+
+    const image = document.querySelector('.image-container img')
+    image.addEventListener('mouseover', () => {
+        image.style.animationPlayState = 'paused'
+    })
+    image.addEventListener('mouseout', () => {
+        image.style.animationPlayState = 'running'
+    })
+
+    const submit = document.getElementById('submit')
+    const signIn = document.getElementById('signIn')
+    const signUpForm = document.getElementById('sign-up')
+    const signInForm = document.getElementById('sign-in')
+    const signInBtn = document.querySelector('.sign-in')
+    const signUpBtn = document.querySelector('.sign-up')
+
+    // form validation
+    function valueValidator(value) {
+        if (value === "") {
+            generateMsg('This field is required', 'error-msg')
+        } else {
+            // replace escape character
+            return value.replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        }
+    }
+    // validate email 
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+    function generateMsg(msg, msgType) {
+        const msgElement = document.createElement('p')
+        msgElement.classList.add(msgType)
+        msgElement.innerText = msg
+        document.querySelector('body').appendChild(msgElement)
+        // remove msg after some time
+        setTimeout(() => {
+            msgElement.remove()
+        }, 3000)
+    }
+
+    signInBtn.addEventListener('click', () => {
+        signUpForm.style.display = 'none'
+        signInBtn.style.display = 'none'
+        signUpBtn.style.display = 'block'
+        signInForm.style.display = 'block'
+        image.src="images/aeroplane3.jpg"
+    })
+    signUpBtn.addEventListener('click', () => {
+
+        signUpForm.style.display = 'block'
+        signInBtn.style.display = 'block'
+        signUpBtn.style.display = 'none'
+        signInForm.style.display = 'none'
+        image.src="images/aeroplane.webp"
+    })
+    submit.addEventListener('click', (e) => {
+        e.preventDefault()
+        // match password and confirm password
+        const password = document.getElementById('password').value
+        const CnfirmPassword = document.getElementById('Cnfirm-password')
+        if (password.length < 6 && password.length > 0 && CnfirmPassword.value.length < 6 && CnfirmPassword.value.length > 0) {
+            generateMsg('Password must be atleast 6 characters', 'error-msg')
+            return false
+        }
+        if (password !== CnfirmPassword.value) {
+            generateMsg('Password does not match', 'error-msg')
+            return false
+        }
+        if (!validateEmail(email.value)) {
+            generateMsg('Please enter a valid email', 'error-msg')
+            return false
+        }
+        //get values from input fields
+        const firstName = document.getElementById('first-name').value
+        const lastName = document.getElementById('last-name').value
+        const emailId = document.getElementById('email').value
+        const username = document.getElementById('username').value
+        if (username.length < 6) {
+            generateMsg('Username must be atleast 6 characters', 'error-msg')
+            return false
+        }
+        fetch('https://breakable-fish-crown.cyclic.app/aptitude/signUp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ firstName, lastName, emailId, username, password }),
+        }).then(res => res.json())
+            .then(data => {
+                data.status === 'success' ? generateMsg(data.message, 'success-msg') : data.status === "Conflict" ? generateMsg(data.message, 'error-msg') : generateMsg(data.message, 'error-msg')
+            }).catch(err => {
+                generateMsg(err.message, 'error-msg')
+            })
+    })
+    // login form
+    signIn.addEventListener('click', (e) => {
+        e.preventDefault()
+        const emailId = document.getElementById('emailSign').value
+        const password = document.getElementById('passwordSign').value
+        fetch('https://breakable-fish-crown.cyclic.app/aptitude/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ emailId, password }),
+        }).then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    generateMsg(data.message, 'success-msg')
+                } else if (data.status === 'not found') {
+                    generateMsg(data.message, 'error-msg')
+                } else {
+                    generateMsg(data.message, 'error-msg')
+                }
+            }).catch(err => {
+                generateMsg(err.message, 'error-msg')
+            })
+    })
+</script>
+
+</html>
