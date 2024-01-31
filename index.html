@@ -240,10 +240,6 @@
         }
 
         @media screen and (max-width: 765px) {
-            body {
-                align-items: baseline;
-            }
-
             .container {
                 grid-template-columns: 1fr;
                 max-width: 100%;
@@ -410,6 +406,7 @@
         signUpBtn.style.display = 'block'
         signInForm.style.display = 'block'
         image.src = "images/aeroplane3.jpg"
+        document.title = "Altitude Air || Sign In"
     })
     signUpBtn.addEventListener('click', () => {
 
@@ -418,6 +415,7 @@
         signUpBtn.style.display = 'none'
         signInForm.style.display = 'none'
         image.src = "images/aeroplane.webp"
+        document.title = "Altitude Air || Sign Up"
     })
     submit.addEventListener('click', (e) => {
         e.preventDefault()
